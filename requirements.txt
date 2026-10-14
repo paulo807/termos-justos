@@ -3,3 +3,5 @@ fpdf
 langdetect
 PyPDF2
 python-docx
+werkzeug
+pytest
