@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Resultado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<div class="container">
+    <h1>Resultado da Análise</h1>
+    <p><strong>Idioma detetado:</strong> {{ idioma }}</p>
+
+    <p>Texto analisado:</p>
+    <pre>{{ texto_destacado|safe }}</pre>
+
+    {% if abusivas %}
+        <h2>Cláusulas suspeitas encontradas:</h2>
+        <ul>
+
+        {% for item in abusivas %}
+    <li>
+        {{ item['clausula'] }}
+
+        {% if item['nivel'] == 'grave' %}
+            <strong style="color:red">(grave)</strong>
+        {% else %}
+            <strong style="color:orange">(moderado)</strong>
+        {% endif %}
+    </li>
+{% endfor %}
+
+        </ul>
+        <p><strong>{{ resumo }}</strong></p>
+    {% else %}
+        <p>Nenhuma cláusula abusiva encontrada.</p>
+    {% endif %}
+
+    <h3>Gráfico de Cláusulas Abusivas</h3>
+<canvas id="graficoAbusivas" width="400" height="400"></canvas>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Valores enviados pelo Flask
+    const graves = Number('{{ graves | safe }}');
+    const moderadas = Number('{{ moderadas | safe }}');
+
+    const ctx = document.getElementById('graficoAbusivas').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Graves', 'Moderadas'],
+            datasets: [{
+                data: [graves, moderadas],
+                backgroundColor: ['#ff4d4d', '#ffcc00'],
+                borderColor: ['#cc0000', '#b38f00'],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+
+
+
+     <div style="display: flex; justify-content: space-between; width: 100%;">
+         <a href="/"><button>Voltar</button></a>
+         <a href="/download_docx"><button>Baixar Relatório em DOCX</button></a>
+         <a href="/download_pdf"><button>Baixar Relatório em PDF</button></a>
+     </div>
+
+</div>
+</body>
+</html>

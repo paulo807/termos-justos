@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos Justos</title>
+
+    <!-- Ligação para o CSS externo -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Termos Justos</h1>
+
+    <form action="/analisar" method="post" enctype="multipart/form-data">
+        <label for="termos">Cole o texto ou envie um ficheiro:</label><br>
+        <textarea id="termos" name="termos" rows="10" cols="50" placeholder="cole aqui o texto"></textarea><br>
+
+        <label for="ficheiro">Escolha um ficheiro:</label><br>
+        <input type="file" id="ficheiro" name="ficheiro"><br>
+
+        <button type="submit">Analisar</button>
+    </form>
+</div>
+</body>
+</html>

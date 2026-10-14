@@ -1,0 +1,137 @@
+:root {
+    --primary: #3498db;
+    --primary-hover: #2980b9;
+    --text: #2c3e50;
+    --text-light: #5a6c7d;
+    --bg: #f5f7fa;
+    --border: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    "font-family: system-ui, sans-serif;"
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px; /* Pequeno espaçamento para o conteúdo não colar físico no ecrã */
+}
+
+/* Contentor agora ocupa 100% da largura disponível */
+.container {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    text-align: left; /* Alinhado à esquerda acompanha melhor o formato 100% */
+    padding-left: 10px;
+}
+
+h2 {
+    color: #af0e0e;
+    margin-top: 1rem;
+}
+
+/* Form e Caixa de Resultados ocupam 100% da tela */
+form, .resultado-box {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Textarea agora estica totalmente na horizontal */
+textarea {
+    width: 100%;
+    min-height: 350px; /* Ligeiramente maior para aproveitar o ecrã largo */
+    padding: 1.2rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font: inherit;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* O texto original adapta-se a 100% da largura */
+pre {
+    background: #000000;
+    padding: 1.2rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--border);
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: inherit;
+    color: var(--text-light);
+    max-height: 250px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+/* Lista de cláusulas abusivas a 100% */
+ul {
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+li {
+    padding: 0.8rem 1.2rem;
+    background: #000000;
+    border-left: 4px solid #312b14;
+    border-radius: 4px;
+    color: #0d14a1;
+    width: 100%;
+}
+
+/* Botões ajustados para o layout expandido */
+button, .btn {
+    align-self: flex-start; /* Alinha o botão à esquerda acompanhando o fluxo total */
+    padding: 0.8rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: var(--primary);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s ease;
+}
+
+button:hover, .btn:hover {
+    background: var(--primary-hover);
+}
+
+a {
+    text-decoration: none;
+    display: contents;
+}
+
+#graficoAbusivas {
+    max-width: 200px;
+    max-height: 1200px;
+    margin: 0 auto;
+
+}
+
+h3{text-align: center}
