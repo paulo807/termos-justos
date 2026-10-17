@@ -3,9 +3,12 @@ from werkzeug.utils import secure_filename
 import PyPDF2
 from config import *
 from utils import *
+from database import *
 
 
 app = Flask(__name__)
+
+criar_tabela()
 
 ultimo_texto_destacado = ""
 ultimo_abusivas = []
@@ -70,6 +73,7 @@ def analisar():
     global ultimo_texto_destacado, ultimo_abusivas, ultimo_resumo
     ultimo_texto_destacado, ultimo_abusivas, ultimo_resumo = texto_destacado, abusivas, resumo
 
+    salvar_analise(texto, idioma, abusivas, resumo)
     return render_template("resultado.html",
                            idioma=idioma,
                            texto_destacado=texto_destacado,
@@ -77,6 +81,11 @@ def analisar():
                            resumo=resumo,
                            graves=graves,
                            moderadas=moderadas)
+
+@app.route('/historico')
+def historico():
+    analises = listar_analises()
+    return render_template('historico.html', analises=analises)
 
 @app.route('/download_pdf')
 def download_pdf():
