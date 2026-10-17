@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Análise completa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Análise completa</h1>
+    <p><strong>Data:</strong> {{ analise[5] }}</p>
+    <p><strong>Idioma:</strong> {{ analise[2] }}</p>
+    <pre>{{ analise[1] }}</pre>
+    <p><a href="{{ url_for('historico') }}">⬅ Voltar ao histórico</a></p>
+</body>
+</html>

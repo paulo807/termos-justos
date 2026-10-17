@@ -87,6 +87,14 @@ def historico():
     analises = listar_analises()
     return render_template('historico.html', analises=analises)
 
+@app.route('/analise/<int:id>')
+def ver_analise(id):
+    analise = obter_analise(id)
+    if analise:
+        return render_template('analise.html', analise=analise)
+    else:
+        return 'analise nao encontrada', 404
+
 @app.route('/download_pdf')
 def download_pdf():
     response = Response(gerar_pdf(ultimo_texto_destacado, ultimo_abusivas, ultimo_resumo))

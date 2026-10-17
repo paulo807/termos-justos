@@ -36,3 +36,11 @@ def listar_analises():
     resultados = cursor.fetchall()
     conn.close()
     return resultados
+
+def obter_analise(id):
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    cursor.execute('SELECT id, texto, idioma, abusivas, resumo, data FROM analises WHERE id = ?', (id,))
+    resultado = cursor.fetchone()
+    conn.close()
+    return resultado
