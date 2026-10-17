@@ -13,7 +13,7 @@
         {% for analise in analises %}
         <li>
             <strong>{{ analise[3] }}</strong> <!-- Data -->
-            <p>{{ analise[2][:500] }}...</p> <!-- Preview do texto -->
+            <p>{{ analise[1][:100] }}...</p> <!-- Preview do texto -->
             <a href="{{ url_for('ver_analise', id=analise[0]) }}">Ver análise completa</a>
         </li>
         {% endfor %}

@@ -13,7 +13,6 @@ criar_tabela()
 ultimo_texto_destacado = ""
 ultimo_abusivas = []
 ultimo_resumo = ""
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -108,6 +107,7 @@ def download_docx():
     response.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     response.headers['Content-Disposition'] = 'attachment; filename=relatorio.docx'
     return response
+
 
 
 if __name__ == '__main__':
