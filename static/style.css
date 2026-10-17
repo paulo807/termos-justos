@@ -14,7 +14,7 @@
 }
 
 body {
-    "font-family: system-ui, sans-serif;"
+    font-family: cursive;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
@@ -135,3 +135,16 @@ a {
 }
 
 h3{text-align: center}
+
+
+.tabela-historico {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabela-historico th, .tabela-historico td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
