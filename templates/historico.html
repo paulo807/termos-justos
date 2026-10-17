@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico de Análises</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>📜 Histórico de Análises</h1>
+
+    {% if analises %}
+        <table class="tabela-historico">
+            <tr>
+                <th>ID</th>
+                <th>Idioma</th>
+                <th>Resumo</th>
+                <th>Data</th>
+            </tr>
+            {% for analise in analises %}
+            <tr>
+                <td>{{ analise[0] }}</td>
+                <td>{{ analise[1] }}</td>
+                <td>{{ analise[2] }}</td>
+                <td>{{ analise[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Nenhuma análise encontrada ainda.</p>
+    {% endif %}
+
+    <p><a href="{{ url_for('index') }}">⬅ Voltar</a></p>
+</body>
+</html>
