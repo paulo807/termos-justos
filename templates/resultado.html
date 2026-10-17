@@ -13,7 +13,37 @@
     <p><strong>Idioma detetado:</strong> {{ idioma }}</p>
 
     <p>Texto analisado:</p>
-    <pre>{{ texto_destacado|safe }}</pre>
+
+<div id="textoContrato">
+    <!-- Mostra só os primeiros 500 caracteres -->
+    <pre id="textoParcial">{{ texto_destacado[:500]|safe }}...</pre>
+
+    <!-- Texto completo escondido inicialmente -->
+    <pre id="textoCompleto" style="display:none;">{{ texto_destacado|safe }}</pre>
+
+    <!-- Botão para alternar -->
+    <button onclick="toggleTexto(this)">Ver mais</button>
+</div>
+
+<script>
+function toggleTexto(botao) {
+    const parcial = document.getElementById("textoParcial");
+    const completo = document.getElementById("textoCompleto");
+
+
+    if (completo.style.display === "none") {
+        parcial.style.display = "none";      // esconde versão parcial
+        completo.style.display = "block";    // mostra texto completo
+        botao.innerText = "Ver menos";
+    } else {
+        completo.style.display = "none";     // esconde texto completo
+        parcial.style.display = "block";     // volta a mostrar só os 500 caracteres
+        botao.innerText = "Ver mais";
+    }
+}
+</script>
+
+
 
     {% if abusivas %}
         <h2>Cláusulas suspeitas encontradas:</h2>
@@ -79,6 +109,7 @@
          <a href="/download_docx"><button>Baixar Relatório em DOCX</button></a>
          <a href="/download_pdf"><button>Baixar Relatório em PDF</button></a>
      </div>
+<p><a href="{{ url_for('historico') }}">📜 Ver histórico de análises</a></p>
 
 </div>
 </body>
