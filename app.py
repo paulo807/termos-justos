@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 criar_tabela()
 
+criar_tabela_termos_abusivos()
+
 ultimo_texto_destacado = ""
 ultimo_abusivas = []
 ultimo_resumo = ""

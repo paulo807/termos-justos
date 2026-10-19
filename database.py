@@ -28,7 +28,7 @@ def criar_tabela_termos_abusivos():
         CREATE TABLE IF NOT EXISTS termos_abusivos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,   -- chave única
             clausula TEXT,                          -- texto da cláusula abusiva
-            nível TEXT,                             -- nível (grave ou moderado)
+            nivel TEXT,                             -- nivel (grave ou moderado)
             fonte TEXT                              -- site ou documento de onde veio
         )
     """)
